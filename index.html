@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoot'em Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="hud">
+    <div id="lives">
+      <img src="pdv.png" class="life">
+      <img src="pdv1.png" class="life">
+      <img src="pdv2.png" class="life">
+      <img src="pdv3.png" class="life">
+    </div>
+    <div id="score">Score: 0 | Niveau: 1</div>
+  </div>
+  <div id="game">
+    <div id="lives">
+        <img src="pdv.png" class="life">
+        <img src="pdv1.png" class="life">
+        <img src="pdv2.png" class="life">
+        <img src="pdv3.png" class="life">
+      </div>
+      <div id="score">Score: 0</div>
+      <div id="player"></div>
+      <div id="pauseOverlay" class="hidden">
+        <div class="pause-content">
+          <button id="pauseButton">Pause</button>
+          <div id="gameOverInfo" class="hidden">
+            <h1 id="finalScore"></h1>
+            <button id="restartButton">Recommencer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </div>
+  
+</body>
+</html>
