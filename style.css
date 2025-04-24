@@ -8,7 +8,7 @@ body {
   }
   
   .container {
-    width: 60%;
+    width: 100%;
     height: 100%;
     display: flex;
     background-color: #111;
@@ -16,7 +16,7 @@ body {
   
   /* Vies à gauche */
   #sidebar {
-    width: 180px;
+    width: 5%;
     background: #0f0f0f;
     border-right: 1px solid black;
     display: flex;
@@ -31,8 +31,8 @@ body {
   }
   
   .life {
-    width: 150px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
   
