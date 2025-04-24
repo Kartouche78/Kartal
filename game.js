@@ -28,7 +28,7 @@ let isPaused = false;
 let gameOver = false;
 
 let activeBulletsPerColumn = [0, 0, 0];
-const maxBulletsPerColumn = 10;
+const maxBulletsPerColumn = 5;
 const maxLevel = 7;
 
 function updatePlayerPosition() {
