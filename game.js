@@ -120,7 +120,6 @@ if (isMobile()) {
   });
 
   controlsContainer.appendChild(leftBtn);
-  controlsContainer.appendChild(shootBtn);
   controlsContainer.appendChild(rightBtn);
   game.appendChild(controlsContainer);
 }
