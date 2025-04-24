@@ -77,18 +77,53 @@ game.addEventListener('click', () => {
 });
 
 if (isMobile()) {
-  const leftBtn = document.createElement('button');
-  leftBtn.innerText = '⬅️';
-  leftBtn.style.position = 'absolute';
-  leftBtn.style.bottom = '20px';
-  leftBtn.style.left = '20px';
-  leftBtn.style.fontSize = '32px';
-  leftBtn.style.zIndex = '100';
-  leftBtn.onclick = () => {
+  const controlsContainer = document.createElement('div');
+  controlsContainer.style.position = 'absolute';
+  controlsContainer.style.bottom = '10px';
+  controlsContainer.style.left = '50%';
+  controlsContainer.style.transform = 'translateX(-50%)';
+  controlsContainer.style.display = 'flex';
+  controlsContainer.style.gap = '20px';
+  controlsContainer.style.zIndex = '100';
+
+  const createBtn = (emoji, onClick) => {
+    const btn = document.createElement('button');
+    btn.innerText = emoji;
+    btn.style.width = '60px';
+    btn.style.height = '60px';
+    btn.style.fontSize = '28px';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '50%';
+    btn.style.background = '#fff';
+    btn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+    btn.style.cursor = 'pointer';
+    btn.onclick = onClick;
+    return btn;
+  };
+
+  const leftBtn = createBtn('⬅️', () => {
     if (currentColumn > 0) {
       currentColumn--;
       updatePlayerPosition();
     }
+  });
+
+  const shootBtn = createBtn('⬆️', () => {
+    shootBullet();
+  });
+
+  const rightBtn = createBtn('➡️', () => {
+    if (currentColumn < columnCount - 1) {
+      currentColumn++;
+      updatePlayerPosition();
+    }
+  });
+
+  controlsContainer.appendChild(leftBtn);
+  controlsContainer.appendChild(shootBtn);
+  controlsContainer.appendChild(rightBtn);
+  game.appendChild(controlsContainer);
+}
   };
   game.appendChild(leftBtn);
 
