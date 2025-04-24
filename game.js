@@ -72,6 +72,52 @@ game.addEventListener('click', () => {
   }
 });
 
+// Contrôles mobiles
+const leftBtn = document.createElement('button');
+leftBtn.innerText = '⬅️';
+leftBtn.style.position = 'absolute';
+leftBtn.style.bottom = '20px';
+leftBtn.style.left = '20px';
+leftBtn.style.fontSize = '32px';
+leftBtn.style.zIndex = '100';
+leftBtn.onclick = () => {
+  if (currentColumn > 0) {
+    currentColumn--;
+    updatePlayerPosition();
+  }
+};
+
+game.appendChild(leftBtn);
+
+const rightBtn = document.createElement('button');
+rightBtn.innerText = '➡️';
+rightBtn.style.position = 'absolute';
+rightBtn.style.bottom = '20px';
+rightBtn.style.right = '20px';
+rightBtn.style.fontSize = '32px';
+rightBtn.style.zIndex = '100';
+rightBtn.onclick = () => {
+  if (currentColumn < columnCount - 1) {
+    currentColumn++;
+    updatePlayerPosition();
+  }
+};
+
+game.appendChild(rightBtn);
+
+const shootBtn = document.createElement('button');
+shootBtn.innerText = '⬆️';
+shootBtn.style.position = 'absolute';
+shootBtn.style.bottom = '20px';
+shootBtn.style.left = 'calc(50% - 25px)';
+shootBtn.style.fontSize = '32px';
+shootBtn.style.zIndex = '100';
+shootBtn.onclick = () => {
+  shootBullet();
+};
+
+game.appendChild(shootBtn);
+
 function shootBullet() {
   if (activeBulletsPerColumn[currentColumn] >= maxBulletsPerColumn) return;
 
@@ -90,7 +136,7 @@ function shootBullet() {
   bullet.classList.add('bullet');
 
   const columnWidth = game.clientWidth / columnCount;
-  bullet.style.left = `${bulletColumn * columnWidth + columnWidth / 2 - 15}px`;
+  bullet.style.left = `${bulletColumn * columnWidth + columnWidth / 2 - 25}px`;
   bullet.style.bottom = `110px`;
 
   game.appendChild(bullet);
