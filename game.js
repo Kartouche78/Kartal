@@ -124,36 +124,6 @@ if (isMobile()) {
   controlsContainer.appendChild(rightBtn);
   game.appendChild(controlsContainer);
 }
-  };
-  game.appendChild(leftBtn);
-
-  const rightBtn = document.createElement('button');
-  rightBtn.innerText = '➡️';
-  rightBtn.style.position = 'absolute';
-  rightBtn.style.bottom = '20px';
-  rightBtn.style.right = '20px';
-  rightBtn.style.fontSize = '32px';
-  rightBtn.style.zIndex = '100';
-  rightBtn.onclick = () => {
-    if (currentColumn < columnCount - 1) {
-      currentColumn++;
-      updatePlayerPosition();
-    }
-  };
-  game.appendChild(rightBtn);
-
-  const shootBtn = document.createElement('button');
-  shootBtn.innerText = '⬆️';
-  shootBtn.style.position = 'absolute';
-  shootBtn.style.bottom = '20px';
-  shootBtn.style.left = 'calc(50% - 25px)';
-  shootBtn.style.fontSize = '32px';
-  shootBtn.style.zIndex = '100';
-  shootBtn.onclick = () => {
-    shootBullet();
-  };
-  game.appendChild(shootBtn);
-}
 
 function shootBullet() {
   if (activeBulletsPerColumn[currentColumn] >= maxBulletsPerColumn) return;
