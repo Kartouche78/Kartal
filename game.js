@@ -19,7 +19,7 @@ let score = 0;
 let level = 1;
 let lives = 4;
 let enemySpeed = 15;
-let enemySpawnRate = 500; // Initial spawn rate (ms)
+let enemySpawnRate = 500;
 const columnCount = 3;
 
 let lastShotTime = 0;
@@ -30,6 +30,10 @@ let gameOver = false;
 let activeBulletsPerColumn = [0, 0, 0];
 const maxBulletsPerColumn = 8;
 const maxLevel = 9;
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
 function updatePlayerPosition() {
   const columnWidth = game.clientWidth / columnCount;
@@ -72,51 +76,49 @@ game.addEventListener('click', () => {
   }
 });
 
-// Contrôles mobiles
-const leftBtn = document.createElement('button');
-leftBtn.innerText = '⬅️';
-leftBtn.style.position = 'absolute';
-leftBtn.style.bottom = '20px';
-leftBtn.style.left = '20px';
-leftBtn.style.fontSize = '32px';
-leftBtn.style.zIndex = '100';
-leftBtn.onclick = () => {
-  if (currentColumn > 0) {
-    currentColumn--;
-    updatePlayerPosition();
-  }
-};
+if (isMobile()) {
+  const leftBtn = document.createElement('button');
+  leftBtn.innerText = '⬅️';
+  leftBtn.style.position = 'absolute';
+  leftBtn.style.bottom = '20px';
+  leftBtn.style.left = '20px';
+  leftBtn.style.fontSize = '32px';
+  leftBtn.style.zIndex = '100';
+  leftBtn.onclick = () => {
+    if (currentColumn > 0) {
+      currentColumn--;
+      updatePlayerPosition();
+    }
+  };
+  game.appendChild(leftBtn);
 
-game.appendChild(leftBtn);
+  const rightBtn = document.createElement('button');
+  rightBtn.innerText = '➡️';
+  rightBtn.style.position = 'absolute';
+  rightBtn.style.bottom = '20px';
+  rightBtn.style.right = '20px';
+  rightBtn.style.fontSize = '32px';
+  rightBtn.style.zIndex = '100';
+  rightBtn.onclick = () => {
+    if (currentColumn < columnCount - 1) {
+      currentColumn++;
+      updatePlayerPosition();
+    }
+  };
+  game.appendChild(rightBtn);
 
-const rightBtn = document.createElement('button');
-rightBtn.innerText = '➡️';
-rightBtn.style.position = 'absolute';
-rightBtn.style.bottom = '20px';
-rightBtn.style.right = '20px';
-rightBtn.style.fontSize = '32px';
-rightBtn.style.zIndex = '100';
-rightBtn.onclick = () => {
-  if (currentColumn < columnCount - 1) {
-    currentColumn++;
-    updatePlayerPosition();
-  }
-};
-
-game.appendChild(rightBtn);
-
-const shootBtn = document.createElement('button');
-shootBtn.innerText = '⬆️';
-shootBtn.style.position = 'absolute';
-shootBtn.style.bottom = '20px';
-shootBtn.style.left = 'calc(50% - 25px)';
-shootBtn.style.fontSize = '32px';
-shootBtn.style.zIndex = '100';
-shootBtn.onclick = () => {
-  shootBullet();
-};
-
-game.appendChild(shootBtn);
+  const shootBtn = document.createElement('button');
+  shootBtn.innerText = '⬆️';
+  shootBtn.style.position = 'absolute';
+  shootBtn.style.bottom = '20px';
+  shootBtn.style.left = 'calc(50% - 25px)';
+  shootBtn.style.fontSize = '32px';
+  shootBtn.style.zIndex = '100';
+  shootBtn.onclick = () => {
+    shootBullet();
+  };
+  game.appendChild(shootBtn);
+}
 
 function shootBullet() {
   if (activeBulletsPerColumn[currentColumn] >= maxBulletsPerColumn) return;
