@@ -23,13 +23,13 @@ let enemySpawnRate = 500; // Initial spawn rate (ms)
 const columnCount = 3;
 
 let lastShotTime = 0;
-const shootCooldown = 100;
+const shootCooldown = 150;
 let isPaused = false;
 let gameOver = false;
 
 let activeBulletsPerColumn = [0, 0, 0];
-const maxBulletsPerColumn = 5;
-const maxLevel = 7;
+const maxBulletsPerColumn = 8;
+const maxLevel = 9;
 
 function updatePlayerPosition() {
   const columnWidth = game.clientWidth / columnCount;

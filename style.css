@@ -1,26 +1,33 @@
 body {
     margin: 0;
-    background: #000;
-    font-family: sans-serif;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
   
-  #hud {
-    background: #f4f4f4;
-    border: 1px solid black;
+  .container {
+    width: 60%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    background-color: #111;
+  }
+  
+  /* Vies à gauche */
+  #sidebar {
+    width: 180px;
+    background: #0f0f0f;
+    border-right: 1px solid black;
+    display: flex;
     align-items: center;
-    padding: 10px 30px;
-    height: 60px;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 10;
+    justify-content: center;
   }
   
   #lives {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    width: auto;
   }
   
   .life {
@@ -29,19 +36,36 @@ body {
     object-fit: contain;
   }
   
-  #score {
+  /* Partie droite (score en haut + jeu en dessous) */
+  .main {
     flex: 1;
-    text-align: center;
-    font-size: 24px;
+    display: flex;
+    flex-direction: column;
   }
   
+  /* Score centré en haut */
+  #topbar {
+    background: #0f0f0f;
+    border-bottom: 1px solid black;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-color: 
+  }
+  
+  #score {
+    font-size: 24px;
+    color: white;
+  }
+  
+  /* Zone de jeu */
   #game {
     background: #111;
-    border: 1px solid black;
-    width: 100%;
-    height: calc(100vh - 60px);
+    flex: 1;
     position: relative;
     overflow: hidden;
+    border-left: 1px solid black;
   }
   
   .enemy, #player {
@@ -121,3 +145,4 @@ body {
     cursor: pointer;
     z-index: 5;
   }
+  

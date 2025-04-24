@@ -6,32 +6,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="hud">
-    <div id="lives">
-      <img src="pdv.png" class="life">
-      <img src="pdv1.png" class="life">
-      <img src="pdv2.png" class="life">
-      <img src="pdv3.png" class="life">
-    </div>
-    <div id="score">Score: 0 | Niveau: 1</div>
-  </div>
-
-  <div id="game">
-    <div id="player"></div>
-
-    <div id="pauseOverlay" class="hidden">
-      <div class="pause-content">
-        <button id="pauseButton">Pause</button>
-        <div id="gameOverInfo" class="hidden">
-          <h1 id="finalScore"></h1>
-          <button id="restartButton">Recommencer</button>
+    <div class="container">
+      <!-- Colonne gauche : vies -->
+      <div id="sidebar">
+        <div id="lives">
+          <img src="pdv.png" class="life">
+          <img src="pdv1.png" class="life">
+          <img src="pdv2.png" class="life">
+          <img src="pdv3.png" class="life">
+        </div>
+      </div>
+  
+      <div class="main">
+        <!-- Bandeau haut : score + niveau -->
+        <div id="topbar">
+          <div id="score">Score: 0 | Niveau: 1</div>
+        </div>
+  
+        <!-- Zone de jeu -->
+        <div id="game">
+          <div id="player"></div>
+  
+          <div id="pauseOverlay" class="hidden">
+            <div class="pause-content">
+              <button id="pauseButton">Pause</button>
+              <div id="gameOverInfo" class="hidden">
+                <h1 id="finalScore"></h1>
+                <button id="restartButton">Recommencer</button>
+              </div>
+            </div>
+          </div>
+  
+          <button id="resetGame" class="reset-button">🔄</button>
         </div>
       </div>
     </div>
-
-    <button id="resetGame" class="reset-button">🔄</button>
-  </div>
-
-  <script src="game.js"></script>
-</body>
+  
+    <script src="game.js"></script>
+  </body>
+  
 </html>
